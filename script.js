@@ -15,12 +15,12 @@ const voicemail = document.getElementById('voicemail');
 let missedCalls = 0;
 
 const fakeNames = [
-  "Jess 💔",
-  "Toxic #4",
-  "Regret.exe",
+  "Baby 💔",
+  "Toxic ",
+  "Regret",
   "Your Last Hope",
-  "404 Closure Not Found",
-  "Mistake #7",
+  
+  "Mistake ",
   "Ghosted Again 👻",
   "Blocked Contact",
   "Drama Llama 🦙",
@@ -85,6 +85,9 @@ status.classList.remove('glitch');
    const selfBtn = document.createElement('button');
 selfBtn.id = 'call-yourself-btn';
 selfBtn.textContent = '📞 Call Yourself';
+selfBtn.style.height="70px"
+selfBtn.style.borderRadius="7px"
+selfBtn.style.fontSize="17px"
 status.appendChild(selfBtn);
 
 selfBtn.addEventListener('click', () => {
