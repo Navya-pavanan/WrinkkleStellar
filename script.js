@@ -82,18 +82,24 @@ status.classList.remove('glitch');
   `;
 
   // Show the "Call Yourself" button
-    const selfBtn = document.createElement('button');
-  selfBtn.id = 'call-yourself-btn';
-  selfBtn.textContent = '📞 Call Yourself';
-  status.appendChild(selfBtn);
+   const selfBtn = document.createElement('button');
+selfBtn.id = 'call-yourself-btn';
+selfBtn.textContent = '📞 Call Yourself';
+status.appendChild(selfBtn);
 
-  selfBtn.addEventListener('click', () => {
-    status.innerHTML = `
-      <strong style="color: lightblue;">You answered.</strong><br>
-      <em>Sometimes, closure starts within.</em>
-    `;
-    startWebcam(); // ✅ This turns on webcam
-  });
+selfBtn.addEventListener('click', () => {
+  status.innerHTML = `
+    <strong style="color: lightblue;">You answered.</strong><br>
+    <em>Sometimes, closure starts within.</em>
+  `;
+  startWebcam();
+
+  // ⏳ After 2 seconds, show certificate
+  setTimeout(() => {
+    generateCertificate();
+  }, 2000);
+});
+
 };
 
     } else {
@@ -136,3 +142,49 @@ function startWebcam() {
       alert("We couldn't access your webcam. Try refreshing and allow camera access.");
     });
 }
+function generateCertificate() {
+  const canvas = document.getElementById("regret-certificate");
+  const ctx = canvas.getContext("2d");
+
+  canvas.style.display = "block";
+  document.getElementById("download-certificate").style.display = "inline-block";
+
+  ctx.fillStyle = "#fffbe6";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = "#222";
+  ctx.lineWidth = 6;
+  ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+  ctx.fillStyle = "#222";
+  ctx.font = "bold 24px serif";
+  ctx.textAlign = "center";
+  ctx.fillText("CERTIFICATE OF REGRET", canvas.width / 2, 60);
+
+  ctx.font = "16px sans-serif";
+  ctx.fillText("Outstanding Achievement in Emotional Damage", canvas.width / 2, 100);
+
+  ctx.font = "20px cursive";
+  ctx.fillText("Awarded to: You", canvas.width / 2, 170);
+
+  ctx.font = "18px sans-serif";
+  ctx.fillText("For: Calling your ex. Again.", canvas.width / 2, 220);
+
+  const today = new Date().toLocaleDateString();
+  ctx.font = "16px sans-serif";
+  ctx.fillText("Date Issued: " + today, canvas.width / 2, 260);
+
+  ctx.font = "italic 16px serif";
+  ctx.fillText("Signed: Your Better Judgment", canvas.width / 2, 320);
+}
+document.getElementById("download-certificate").addEventListener("click", () => {
+  const canvas = document.getElementById("regret-certificate");
+  const link = document.createElement("a");
+  link.download = "certificate_of_regret.png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+});
+
+// window.onload = () => {
+//   generateCertificate(); // just to see if it appears on load
+// };
