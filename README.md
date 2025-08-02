@@ -9,9 +9,9 @@
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Aryananda SM - LBSITW
+- Member 2: Navya J - LBSITW
+
 
 ### Project Description
 [2-3 lines about what your project does]
